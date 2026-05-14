@@ -7,60 +7,31 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --purple-900: #26215C;
-    --purple-800: #3C3489;
-    --purple-600: #534AB7;
-    --purple-400: #7F77DD;
-    --purple-200: #AFA9EC;
-    --purple-100: #CECBF6;
-    --purple-50: #EEEDFE;
-    --blue-600: #185FA5;
-    --blue-200: #85B7EB;
-    --blue-50: #E6F1FB;
-    --text: #1C1B2E;
-    --muted: #6B6A85;
-    --border: #EBEBF5;
+    --purple-900: #26215C; --purple-800: #3C3489; --purple-600: #534AB7;
+    --purple-400: #7F77DD; --purple-200: #AFA9EC; --purple-100: #CECBF6;
+    --purple-50: #EEEDFE; --blue-600: #185FA5; --blue-200: #85B7EB;
+    --blue-50: #E6F1FB; --text: #1C1B2E; --muted: #6B6A85; --border: #EBEBF5;
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: #fff; line-height: 1.6; }
 
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 6%;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 6%; display: flex; align-items: center; justify-content: space-between; }
   .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-name { font-size: 16px; font-weight: 700; color: var(--purple-600); letter-spacing: -0.4px; }
   .logo-tag { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; display: block; }
-  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
   nav ul a { text-decoration: none; font-size: 14px; color: var(--muted); font-weight: 500; transition: color 0.2s; }
   nav ul a:hover { color: var(--purple-600); }
+  .nav-btns { display: flex; gap: 0.6rem; }
   .nav-btn { background: var(--purple-600); color: #fff; padding: 0.55rem 1.3rem; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
   .nav-btn:hover { background: var(--purple-800); }
+  .nav-btn-outline { background: transparent; color: var(--purple-600); border: 1.5px solid var(--purple-200); padding: 0.5rem 1.2rem; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .nav-btn-outline:hover { background: var(--purple-50); }
 
-  .hero {
-    padding: 7rem 6% 5rem;
-    background: #fff;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--purple-50); border: 1px solid var(--purple-100);
-    border-radius: 100px; padding: 5px 16px;
-    font-size: 12px; font-weight: 600; color: var(--purple-600);
-    letter-spacing: 0.2px; margin-bottom: 2rem;
-  }
+  .hero { padding: 7rem 6% 5rem; background: #fff; max-width: 800px; margin: 0 auto; text-align: center; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 7px; background: var(--purple-50); border: 1px solid var(--purple-100); border-radius: 100px; padding: 5px 16px; font-size: 12px; font-weight: 600; color: var(--purple-600); letter-spacing: 0.2px; margin-bottom: 2rem; }
   .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple-400); display: inline-block; }
-  .hero h1 {
-    font-size: 3.2rem; font-weight: 800; line-height: 1.1;
-    letter-spacing: -1.5px; color: var(--text);
-    margin-bottom: 1.5rem;
-  }
+  .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: var(--text); margin-bottom: 1.5rem; }
   .hero h1 em { font-style: normal; color: var(--purple-600); }
   .hero p { font-size: 1.1rem; color: var(--muted); line-height: 1.75; max-width: 560px; margin: 0 auto 2.5rem; }
   .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
@@ -68,22 +39,29 @@
   .btn-dark:hover { background: var(--purple-800); }
   .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); padding: 0.85rem 2rem; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
   .btn-ghost:hover { border-color: var(--purple-200); color: var(--purple-600); }
-
   .divider { height: 1px; background: var(--border); margin: 0 6%; }
 
-  .services { padding: 6rem 6%; }
   .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple-600); margin-bottom: 0.8rem; }
   .section-heading { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px; color: var(--text); margin-bottom: 1rem; line-height: 1.15; }
   .section-body { font-size: 1rem; color: var(--muted); max-width: 480px; line-height: 1.7; margin-bottom: 3.5rem; }
+
+  .what-is-aba { padding: 6rem 6%; background: var(--purple-50); }
+  .aba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .aba-left h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 1.25rem; }
+  .aba-left h2 em { font-style: normal; color: var(--purple-600); }
+  .aba-left p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+  .aba-points { display: flex; flex-direction: column; gap: 1rem; }
+  .aba-point { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 12px; padding: 1.1rem 1.25rem; border: 1px solid var(--border); }
+  .aba-point-icon { width: 28px; height: 28px; border-radius: 8px; background: var(--purple-50); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .aba-point div p { font-size: 0.875rem; color: var(--muted); margin-top: 2px; }
+  .aba-point div strong { font-size: 0.9rem; color: var(--text); }
+
+  .services { padding: 6rem 6%; background: #fff; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
-  .card {
-    border: 1px solid var(--border); border-radius: 16px;
-    padding: 2rem 1.75rem; background: #fff;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
+  .card { border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.75rem; background: #fff; transition: border-color 0.2s, box-shadow 0.2s; }
   .card:hover { border-color: var(--purple-200); box-shadow: 0 4px 24px rgba(83,74,183,0.08); }
   .card-num { font-size: 11px; font-weight: 700; color: var(--purple-400); letter-spacing: 1px; margin-bottom: 1rem; }
-  .card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; letter-spacing: -0.2px; }
+  .card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
   .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
 
   .about { padding: 6rem 6%; background: var(--purple-50); }
@@ -96,10 +74,7 @@
   .pillar-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--purple-600); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
   .pillar-icon svg { width: 11px; height: 11px; }
   .pillar span { font-size: 0.875rem; color: var(--text); font-weight: 500; }
-  .about-visual {
-    background: #fff; border-radius: 20px; border: 1px solid var(--border);
-    padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem;
-  }
+  .about-visual { background: #fff; border-radius: 20px; border: 1px solid var(--border); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
   .stat-row { display: flex; gap: 1rem; }
   .stat { flex: 1; background: var(--purple-50); border-radius: 12px; padding: 1.25rem; text-align: center; }
   .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--purple-600); letter-spacing: -1px; }
@@ -108,62 +83,84 @@
   .stat-wide p { font-size: 0.875rem; color: var(--blue-600); font-weight: 600; line-height: 1.4; }
   .stat-wide span { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
 
-  .area { padding: 6rem 6%; text-align: center; }
+  .how-it-works { padding: 6rem 6%; background: #fff; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .step { border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem 1.5rem; transition: border-color 0.2s, box-shadow 0.2s; }
+  .step:hover { border-color: var(--purple-200); box-shadow: 0 4px 24px rgba(83,74,183,0.08); }
+  .step-num { font-size: 11px; font-weight: 700; color: var(--purple-400); letter-spacing: 1px; margin-bottom: 1rem; }
+  .step h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+  .steps-note { margin-top: 1.5rem; background: var(--purple-50); border-radius: 12px; padding: 1.25rem 1.5rem; font-size: 0.875rem; color: var(--muted); line-height: 1.7; border: 1px solid var(--purple-100); }
+  .steps-note strong { color: var(--purple-600); }
+
+  .faq { padding: 6rem 6%; background: var(--purple-50); }
+  .faq-inner { max-width: 720px; margin: 0 auto; }
+  .faq-inner .section-eyebrow, .faq-inner .section-heading { text-align: center; }
+  .faq-inner .section-body { text-align: center; margin: 0 auto 3rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .faq-q { padding: 1.25rem 1.5rem; font-size: 0.95rem; font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .faq-q:hover { color: var(--purple-600); }
+  .faq-a { padding: 0 1.5rem 1.25rem; font-size: 0.875rem; color: var(--muted); line-height: 1.7; display: none; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-icon { font-size: 18px; color: var(--purple-400); transition: transform 0.2s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .area { padding: 6rem 6%; text-align: center; background: #fff; }
   .area h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 1rem; }
   .area p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
-  .area-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--purple-50); border: 1px solid var(--purple-100);
-    border-radius: 100px; padding: 0.7rem 1.8rem;
-    font-size: 15px; font-weight: 600; color: var(--purple-600);
-  }
+  .area-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--purple-50); border: 1px solid var(--purple-100); border-radius: 100px; padding: 0.7rem 1.8rem; font-size: 15px; font-weight: 600; color: var(--purple-600); }
+
+  .join { padding: 6rem 6%; background: var(--purple-50); }
+  .join-inner { max-width: 680px; }
+  .join-inner h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 1rem; }
+  .join-inner h2 em { font-style: normal; color: var(--purple-600); }
+  .join-inner p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+  .join-roles { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
+  .role-badge { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--text); }
+  .btn-purple { background: var(--purple-600); color: #fff; padding: 0.85rem 2rem; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-purple:hover { background: var(--purple-800); }
 
   .contact { padding: 6rem 6%; background: #fff; }
   .contact-inner { max-width: 580px; margin: 0 auto; }
-  .contact-inner .section-eyebrow { text-align: center; }
-  .contact-inner .section-heading { text-align: center; }
+  .contact-inner .section-eyebrow, .contact-inner .section-heading { text-align: center; }
   .contact-inner .section-body { text-align: center; margin: 0 auto 2.5rem; }
   .form { display: flex; flex-direction: column; gap: 1rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group label { font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: 0.2px; }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    border: 1.5px solid var(--border); border-radius: 10px;
-    padding: 0.75rem 1rem; font-size: 14px; color: var(--text);
-    font-family: inherit; background: #fff; outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--purple-400); }
+  .form-group label { font-size: 12px; font-weight: 600; color: var(--text); }
+  .form-group input, .form-group select, .form-group textarea { border: 1.5px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem; font-size: 14px; color: var(--text); font-family: inherit; background: #fff; outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--purple-400); }
   .form-group textarea { resize: vertical; min-height: 110px; }
-  .form-submit {
-    background: var(--purple-600); color: #fff; border: none;
-    padding: 0.9rem; border-radius: 10px; font-size: 15px; font-weight: 700;
-    cursor: pointer; transition: background 0.2s; font-family: inherit;
-    margin-top: 0.5rem;
-  }
+  .form-submit { background: var(--purple-600); color: #fff; border: none; padding: 0.9rem; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s; font-family: inherit; margin-top: 0.5rem; }
   .form-submit:hover { background: var(--purple-800); }
   .form-note { text-align: center; font-size: 12px; color: var(--muted); margin-top: 0.5rem; }
 
-  footer {
-    background: var(--text); padding: 2.5rem 6%;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  footer .f-logo { color: #fff; font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
-  footer .f-sub { font-size: 12px; color: #888; margin-top: 2px; }
-  footer .f-right { text-align: right; }
-  footer .f-right p { font-size: 12px; color: #888; }
-  footer .f-right a { font-size: 12px; color: var(--purple-200); text-decoration: none; }
+  footer { background: var(--text); padding: 2.5rem 6%; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .f-logo { color: #fff; font-size: 15px; font-weight: 700; }
+  .f-sub { font-size: 12px; color: #888; margin-top: 4px; }
+  .f-right { text-align: right; }
+  .f-right p { font-size: 12px; color: #888; margin-bottom: 4px; }
+  .f-right a { font-size: 12px; color: var(--purple-200); text-decoration: none; }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .footer-bottom p { font-size: 12px; color: #666; }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; color: #888; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--purple-200); }
 
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 768px) {
     .hero h1 { font-size: 2.2rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-grid, .aba-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .steps { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     nav ul { display: none; }
+    .nav-btn-outline { display: none; }
+    .footer-top { flex-direction: column; }
+    .f-right { text-align: left; }
   }
 </style>
 </head>
@@ -189,22 +186,67 @@
   <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#area">Service Area</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#join">Join Our Team</a></li>
   </ul>
-  <a href="#contact" class="nav-btn">Get in Touch</a>
+  <div class="nav-btns">
+    <a href="#contact" class="nav-btn-outline">Refer a Family</a>
+    <a href="#contact" class="nav-btn">Get Started</a>
+  </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-tag"><span class="dot"></span> Now Accepting New Clients</div>
+  <div class="hero-tag">Now Accepting New Clients</div>
   <h1>Where every child<br>finds their <em>bridge</em></h1>
-  <p>Home-based, compassionate ABA therapy for children and families in Northeast Ohio delivered where your child feels most at home.</p>
+  <p>Home-based, compassionate ABA therapy for children and families in Northeast Ohio, delivered where your child feels most at home.</p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-dark">Request Services</a>
-    <a href="#services" class="btn-ghost">Learn More</a>
+    <a href="#contact" class="btn-dark">Get Started</a>
+    <a href="#what-is-aba" class="btn-ghost">Learn More</a>
   </div>
 </section>
 
 <div class="divider"></div>
+
+<section class="what-is-aba" id="what-is-aba">
+  <div class="aba-grid">
+    <div class="aba-left">
+      <p class="section-eyebrow">What Is ABA?</p>
+      <h2>The science of <em>helping children grow</em></h2>
+      <p>Applied Behavior Analysis (ABA) is an evidence-based therapy that helps children build communication, social, and life skills, while reducing challenging behaviors that get in the way of learning and connection.</p>
+      <p>ABA looks at each child as an individual. It finds the what and the why behind behaviors, then replaces the ones holding your child back with skills that move them forward.</p>
+      <p>We serve children and young adults ages 2 to 21.</p>
+    </div>
+    <div class="aba-points">
+      <div class="aba-point">
+        <div class="aba-point-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div>
+          <strong>Early Intervention (Ages 2 to 6)</strong>
+          <p>Building foundational communication, play skills, and school readiness from the ground up.</p>
+        </div>
+      </div>
+      <div class="aba-point">
+        <div class="aba-point-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <strong>Pre-Adolescent (Ages 7 to 12)</strong>
+          <p>Expanding communication, building life skills, and supporting independence at home and in school.</p>
+        </div>
+      </div>
+      <div class="aba-point">
+        <div class="aba-point-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div>
+          <strong>Adolescent and Young Adult (Ages 13 to 21)</strong>
+          <p>Focusing on independence, self-care, social skills, and preparing for adult life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="services" id="services">
   <p class="section-eyebrow">What We Offer</p>
@@ -212,19 +254,19 @@
   <p class="section-body">Every service we provide is individualized, family-centered, and grounded in the science of Applied Behavior Analysis.</p>
   <div class="cards">
     <div class="card">
-      <p class="card-num">01 Assessment</p>
+      <p class="card-num">01 — Assessment</p>
       <h3>Behavioral Assessments</h3>
-      <p>Thorough, individualized evaluations that identify your child's unique strengths, needs, and learning profile the essential foundation for effective treatment planning.</p>
+      <p>Thorough, individualized evaluations that identify your child's unique strengths, needs, and learning profile. This is the foundation of every treatment plan we build.</p>
     </div>
     <div class="card">
-      <p class="card-num">02 Therapy</p>
+      <p class="card-num">02 — Therapy</p>
       <h3>Home-Based ABA Therapy</h3>
-      <p>Direct ABA services delivered in your home the most natural environment for children to learn new skills, build independence, and grow with confidence.</p>
+      <p>Direct ABA services delivered in your home, the most natural environment for children to learn new skills, build independence, and grow with confidence.</p>
     </div>
     <div class="card">
-      <p class="card-num">03 Training</p>
+      <p class="card-num">03 — Training</p>
       <h3>Family Training</h3>
-      <p>We equip caregivers with practical strategies and tools to support their child's progress every day because meaningful growth happens between sessions too.</p>
+      <p>We equip caregivers with practical strategies and tools to support their child's progress every day, because meaningful growth happens between sessions too.</p>
     </div>
   </div>
 </section>
@@ -234,8 +276,8 @@
     <div class="about-left">
       <p class="section-eyebrow">Our Philosophy</p>
       <h2>Therapy built on <em>partnership</em></h2>
-      <p>At Building Bridges Behavior Therapy, we believe the best outcomes happen when families are active partners in their child's care not just observers.</p>
-      <p>Our BCBA-led approach is compassionate, data-driven, and designed to work within the rhythms of your real life.</p>
+      <p>At Building Bridges Behavior Therapy, we believe the best outcomes happen when families are active partners in their child's care, not just observers.</p>
+      <p>Our BCBA-led approach is compassionate, data-driven, and designed to work within the rhythms of your real life. We come to you, and we work with you.</p>
       <div class="pillars">
         <div class="pillar">
           <div class="pillar-icon"><svg viewBox="0 0 11 11" fill="none"><polyline points="2,5.5 4.5,8 9,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -243,15 +285,15 @@
         </div>
         <div class="pillar">
           <div class="pillar-icon"><svg viewBox="0 0 11 11" fill="none"><polyline points="2,5.5 4.5,8 9,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Services delivered in your home environment</span>
+          <span>Services delivered in your home</span>
         </div>
         <div class="pillar">
           <div class="pillar-icon"><svg viewBox="0 0 11 11" fill="none"><polyline points="2,5.5 4.5,8 9,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Ohio Medicaid accepted</span>
+          <span>Currently enrolling with Medicaid and select commercial insurers</span>
         </div>
         <div class="pillar">
           <div class="pillar-icon"><svg viewBox="0 0 11 11" fill="none"><polyline points="2,5.5 4.5,8 9,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Caregiver collaboration built into every plan</span>
+          <span>Caregiver collaboration built into every treatment plan</span>
         </div>
       </div>
     </div>
@@ -267,8 +309,8 @@
         </div>
       </div>
       <div class="stat-wide">
-        <p>Medicaid accepted</p>
-        <span>Quality ABA therapy accessible to every Ohio family</span>
+        <p>Ages 2 to 21</p>
+        <span>We serve children and young adults at every stage of development</span>
       </div>
       <div class="stat-wide" style="background: var(--purple-50);">
         <p style="color: var(--purple-600);">Family-centered from day one</p>
@@ -278,13 +320,100 @@
   </div>
 </section>
 
+<section class="how-it-works" id="how-it-works">
+  <p class="section-eyebrow">How It Works</p>
+  <h2 class="section-heading">What to expect</h2>
+  <p class="section-body">We want families to feel informed and prepared. Here is an honest look at the process from first contact to first session.</p>
+  <div class="steps">
+    <div class="step">
+      <p class="step-num">Step 01</p>
+      <h3>Reach Out</h3>
+      <p>Fill out our contact form or have your child's physician or school submit a referral. We complete an intake and verify your insurance benefits.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Step 02</p>
+      <h3>Authorization and Assessment</h3>
+      <p>We work with your insurance to obtain authorization for an initial assessment. Once approved, your BCBA conducts a thorough evaluation of your child.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Step 03</p>
+      <h3>Treatment Plan</h3>
+      <p>Your BCBA develops an individualized treatment plan based on the assessment. That plan is submitted to insurance for approval before services begin.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Step 04</p>
+      <h3>Services Begin</h3>
+      <p>Once your treatment plan is approved, therapy starts. Your family is involved every step of the way, with regular caregiver training built into the process.</p>
+    </div>
+  </div>
+  <div class="steps-note">
+    <strong>A note on timelines:</strong> Insurance authorization can take time and is largely outside our control. We will keep you informed at every stage and advocate on your behalf throughout the process.
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-heading">Questions we hear most</h2>
+    <p class="section-body">If you do not see your question here, reach out. We are always happy to talk.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What is ABA therapy? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Applied Behavior Analysis (ABA) is an evidence-based therapy that helps children build communication, social, and life skills while reducing challenging behaviors. It is the most researched and widely recommended treatment for children with autism, endorsed by the US Surgeon General and the American Academy of Pediatrics.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I get started? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Fill out our contact form and we will reach out within one to two business days. You can also have your child's physician or school professional submit a referral. From there, we will walk you through every step of the process.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does my child need an autism diagnosis? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes. A formal diagnosis of Autism Spectrum Disorder (ASD) is required by insurance providers to authorize ABA services. If your child does not yet have a diagnosis, we can help point you in the right direction to get one.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you accept Medicaid? <span class="faq-icon">+</span></div>
+        <div class="faq-a">We are currently completing our Medicaid enrollment and are also credentialing with select commercial insurance providers. Reach out to us and we can discuss your specific insurance situation and timeline.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What ages do you serve? <span class="faq-icon">+</span></div>
+        <div class="faq-a">We serve children and young adults from ages 2 to 21. Our approach is tailored to each stage of development, from early intervention through adolescence and into young adulthood.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where do sessions take place? <span class="faq-icon">+</span></div>
+        <div class="faq-a">All sessions are delivered in your home. We believe children learn best in the environment where they actually live. Community-based sessions, such as practicing skills at a park or store, may also be incorporated into your child's plan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is expected of me as a caregiver? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Family involvement is a core part of what we do. Caregivers participate in regular training sessions so they can support their child's progress between sessions. You do not need any prior experience with ABA. We teach you everything you need to know.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is ABA therapy a cure for autism? <span class="faq-icon">+</span></div>
+        <div class="faq-a">No. ABA is not a cure, and we would never present it as one. What ABA does is help your child build skills and reduce barriers so they can participate more fully in daily life. Progress looks different for every child, and we celebrate every step forward, no matter how small.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="area" id="area">
   <p class="section-eyebrow">Where We Work</p>
   <h2>Proudly serving <span style="color: var(--purple-600);">Northeast Ohio</span></h2>
-  <p>We bring our services directly to families across the Northeast Ohio region no clinic, no commute, no disruption to your routine.</p>
+  <p>We bring our services directly to families across the Northeast Ohio region. No clinic, no commute, no disruption to your routine.</p>
   <div class="area-badge">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     Northeast Ohio
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="join-inner">
+    <p class="section-eyebrow">Join Our Team</p>
+    <h2>Work that actually <em>matters</em></h2>
+    <p>We are a growing home-based ABA agency in Northeast Ohio, and we are looking for people who are passionate about making a real difference in children's lives.</p>
+    <p>If you are a BCBA or behavior technician who wants to be part of something being built from the ground up, we would love to hear from you.</p>
+    <div class="join-roles">
+      <div class="role-badge">Board Certified Behavior Analyst (BCBA)</div>
+      <div class="role-badge">Registered Behavior Technician / Behavior Technician (RBT/BT)</div>
+    </div>
+    <a href="mailto:lindsay@buildingbridges.care" class="btn-purple">Get in Touch</a>
   </div>
 </section>
 
@@ -292,7 +421,7 @@
   <div class="contact-inner">
     <p class="section-eyebrow">Get in Touch</p>
     <h2 class="section-heading">Let's connect</h2>
-    <p class="section-body">Whether you're a family seeking services, a physician making a referral, or a school professional we'd love to hear from you.</p>
+    <p class="section-body">Whether you are a family seeking services, a physician making a referral, or a school professional, we would love to hear from you.</p>
     <form class="form" action="https://formspree.io/f/mzdoqdjd" method="POST">
       <div class="form-row">
         <div class="form-group">
@@ -319,21 +448,39 @@
         <textarea id="message" name="message" placeholder="Tell us a little about how we can help..."></textarea>
       </div>
       <button type="submit" class="form-submit">Send Message</button>
-      <p class="form-note">We typically respond within 1–2 business days.</p>
+      <p class="form-note">We typically respond within 1 to 2 business days.</p>
     </form>
   </div>
 </section>
 
 <footer>
-  <div>
-    <div class="f-logo">Building Bridges Behavior Therapy, LLC</div>
-    <div class="f-sub">© 2026 · All rights reserved</div>
+  <div class="footer-top">
+    <div>
+      <div class="f-logo">Building Bridges Behavior Therapy, LLC</div>
+      <div class="f-sub">Home-based ABA therapy in Northeast Ohio</div>
+    </div>
+    <div class="f-right">
+      <p>Northeast Ohio</p>
+      <a href="mailto:lindsay@buildingbridges.care">lindsay@buildingbridges.care</a>
+    </div>
   </div>
-  <div class="f-right">
-    <p>Northeast Ohio</p>
-    <a href="mailto:lindsay@buildingbridges.care">lindsay@buildingbridges.care</a>
+  <div class="footer-bottom">
+    <p>© 2026 Building Bridges Behavior Therapy, LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="privacy-policy.html" target="_blank">Privacy Policy</a>
+      <a href="notice-of-privacy-practices.html" target="_blank">Notice of Privacy Practices</a>
+      <a href="patient-rights.html" target="_blank">Patient Rights</a>
+      <a href="nondiscrimination.html" target="_blank">Nondiscrimination</a>
+    </div>
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+</script>
 </body>
 </html>
